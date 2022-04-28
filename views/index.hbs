@@ -1,15 +1,19 @@
 <h1>French Audio Lessons</h1>
 
-<ul>
+<div>
+    <ul class="directory-list">
 
-    {{#if isRoot}}
-    {{else}}
-    <li><a href="../">../</a></li>
-    {{/if}}
-    {{#each directories}}
-    <li><a href="{{this}}">{{this}}</a></li>
-    {{/each}}
-    {{#each files}}
-    <li><a href="https://{{../bucketName}}.s3.amazonaws.com/{{this}}">{{this}}</a></li>
-    {{/each}}
-</ul>
+        {{#if isRoot}}
+        {{else}}
+        <li class="folder"><a href="../">../</a></li>
+        {{/if}}
+        {{#each directories}}
+        <li class="folder"><a href="{{this}}">{{this}}</a></li>
+        {{/each}}
+        {{#each files}}
+        {{#with this}}
+        <li><a href="https://{{../bucketName}}.s3.amazonaws.com/{{path}}">{{name}}</a></li>
+        {{/with}}
+        {{/each}}
+    </ul>
+</div>

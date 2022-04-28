@@ -8,7 +8,7 @@ const BUCKET_NAME = process.env.BUCKET_NAME;
 
 /* GET home page. */
 router.get('/*', async function (req, res, next) {
-  const prefix = req.path !== '/'? req.path.substring(1) : ''
+  const prefix = req.path !== '/' ? req.path.substring(1) : ''
   const objects = await s3.listObjectsV2({
     Bucket: BUCKET_NAME,
     Delimiter: req.path,
@@ -20,7 +20,10 @@ router.get('/*', async function (req, res, next) {
     path: req.path,
     bucketName: BUCKET_NAME,
     directories: objects.CommonPrefixes.map(d => d.Prefix),
-    files: objects.Contents.map(k => k.Key.split(' ').join('+'))
+    files: objects.Contents.map(k => ({
+      path: k.Key.split(' ').join('+'),
+      name: k.Key.replace(prefix, '')
+    }))
   });
 });
 
