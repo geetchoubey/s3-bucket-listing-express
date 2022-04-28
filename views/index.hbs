@@ -1,0 +1,15 @@
+<h1>French Audio Lessons</h1>
+
+<ul>
+
+    {{#if isRoot}}
+    {{else}}
+    <li><a href="../">../</a></li>
+    {{/if}}
+    {{#each directories}}
+    <li><a href="{{this}}">{{this}}</a></li>
+    {{/each}}
+    {{#each files}}
+    <li><a href="https://{{../bucketName}}.s3.amazonaws.com/{{this}}">{{this}}</a></li>
+    {{/each}}
+</ul>
