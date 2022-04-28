@@ -1,5 +1,7 @@
 FROM node:18-alpine
 
+LABEL maintainer="geetchoubey@gmail.com"
+
 WORKDIR /app
 
 ENV PORT 8080

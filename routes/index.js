@@ -15,7 +15,7 @@ router.get('/*', async function (req, res, next) {
     Prefix: prefix,
   }).promise();
   res.render('index', {
-    title: 'Express',
+    title: 'My S3 Data',
     isRoot: req.path === '/',
     path: req.path,
     bucketName: BUCKET_NAME,
